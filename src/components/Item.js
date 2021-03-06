@@ -1,27 +1,39 @@
 import React from 'react'
 import styled from 'styled-components'
-const Item = ({item,columns,setColumns,column}) => {
+import {Draggable} from 'react-beautiful-dnd'
+import {FiDelete} from 'react-icons/fi' 
+
+const Item = ({item,columns,setColumns,column,index}) => {
   const handleDeleteItem=()=>{
     const newItemsList=column.items.filter((el,index)=>el.id!==item.id)
-    console.log(newItemsList);
     const newColumns=columns.map(el=>{
       if(el.id===column.id){
         return{
           ...el,items:newItemsList
         }
       }
-      console.log(el);
       return el
     })
     setColumns(newColumns);
   }
   
   return (
-    <Container>
-    <Title>{item.name}</Title>
+    <Draggable draggableId={item.id} index={index}>
+    {(provided,snapshot)=>(
+      <Container
+        ref={provided.innerRef}
+        isDragging={snapshot.isDragging}
+        {...provided.dragHandleProps}
+        {...provided.draggableProps}
+      >
+      <Title>{item.name}</Title>
       
-      <button onClick={()=>handleDeleteItem()}>X</button>
+      <button onClick={()=>handleDeleteItem()}><FiDelete/></button>
     </Container>
+    )}
+   
+  
+    </Draggable>
   )
 }
 const Container=styled.div`
@@ -31,6 +43,9 @@ const Container=styled.div`
   align-items:center;
   border:2px solid black;
   margin:5px 0;
+  background-color:${({ isDragging }) =>
+    isDragging ? "#F5C6AA" : "white"};
+
   button{
     width:10%;
     background:transparent;
@@ -44,6 +59,6 @@ const Title=styled.div`
   width:80%;
   text-align:left;
   padding:2px 5px;
-
+  
 `
 export default Item
