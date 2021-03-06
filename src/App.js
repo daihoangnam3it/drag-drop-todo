@@ -30,8 +30,9 @@ const App = () => {
     setValue('');
     scrollTo(refAdd.current.scrollWidth);
   };
-  const handleIsAdd = (e) => {
-    setIsAdd(!isAdd);
+  const handleIsAdd =async (e) => {
+    await setIsAdd(!isAdd);
+    refAdd.current.scrollTo(refAdd.current.scrollWidth, 0);
   };
 
   const handleInput = (e) => {
@@ -61,7 +62,7 @@ const App = () => {
     );
   };
   const scrollTo = (width) => {
-    refAdd.current.scrollTo(width + 200, 0);
+    refAdd.current.scrollTo(width, 0);
   };
 
   const onDragEnd=(result)=>{
@@ -170,7 +171,6 @@ const App = () => {
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  padding: 5px 10px;
   overflow-x: auto;
   ::-webkit-scrollbar {
     height: 12px;
@@ -205,11 +205,19 @@ const Column = styled.div`
 `;
 const InputColumn = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content:space-evenly;
   align-items:center;
   min-width: 250px;
-  padding: 5px 10px;
   border:2px solid black;
+  padding:5px 10px;
+  input{
+    width:70%;
+    border:none;
+    border-bottom:1px solid black;
+  }
+  button{
+    margin-right:5px;
+  }
 `;
 
 export default App;

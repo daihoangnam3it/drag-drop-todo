@@ -103,7 +103,7 @@ const Container = styled.div`
   padding: 5px 10px;
   position:relative;
   background-color:${({ isDragging }) =>
-    isDragging ? "#F8E1D1" : "#F8E1D1"};
+    isDragging ? "#F8E1D1" : "#FDF6F0"};
 
 `;
 const Title = styled.div`
