@@ -61,7 +61,7 @@ const App = () => {
     );
   };
   const scrollTo = (width) => {
-    refAdd.current.scrollTo(width, 0);
+    refAdd.current.scrollTo(width + 200, 0);
   };
 
   const onDragEnd=(result)=>{
