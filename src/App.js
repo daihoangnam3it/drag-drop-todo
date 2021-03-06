@@ -1,4 +1,3 @@
-import { logDOM } from '@testing-library/dom';
 import React, { useState, useRef, useEffect } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
