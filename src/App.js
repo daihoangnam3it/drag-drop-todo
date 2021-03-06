@@ -171,6 +171,7 @@ const App = () => {
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
+  padding:5px 10px;
   overflow-x: auto;
   ::-webkit-scrollbar {
     height: 12px;
@@ -208,12 +209,15 @@ const InputColumn = styled.div`
   justify-content:space-evenly;
   align-items:center;
   min-width: 250px;
+  height:50px;
   border:2px solid black;
   padding:5px 10px;
   input{
     width:70%;
     border:none;
     border-bottom:1px solid black;
+    outline:none;
+    padding-left:2px;
   }
   button{
     margin-right:5px;
