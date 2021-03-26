@@ -21,6 +21,7 @@ const Columns = ({ column, columns, setColumns, index }) => {
     const newItem = {
       id: v4(),
       name: name,
+      name2:name
     };
     const newColumns = columns.map((el) => {
       if (el.id === id) {
